@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "esiima-2": {
+      "hosting": {
+        "loginFirebase": [
+          "esiima-2"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "esiima-2"
+  }
+}

@@ -3,7 +3,27 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  firebase: {
+    projectId: 'esiima-2',
+    appId: '1:474509516729:web:be689e90257567b309e068',
+    databaseURL: 'https://esiima-2-default-rtdb.firebaseio.com',
+    storageBucket: 'esiima-2.appspot.com',
+    apiKey: 'AIzaSyCfeweMm0G6eJpxOHywdN8zaVD5shFHPd0',
+    authDomain: 'esiima-2.firebaseapp.com',
+    messagingSenderId: '474509516729',
+    measurementId: 'G-EDGNRM9MLB',
+  },
+  production: false,
+  firebaseConfig : {
+    apiKey: "AIzaSyCfeweMm0G6eJpxOHywdN8zaVD5shFHPd0",
+    authDomain: "esiima-2.firebaseapp.com",
+    databaseURL: "https://esiima-2-default-rtdb.firebaseio.com",
+    projectId: "esiima-2",
+    storageBucket: "esiima-2.appspot.com",
+    messagingSenderId: "474509516729",
+    appId: "1:474509516729:web:be689e90257567b309e068",
+    measurementId: "G-EDGNRM9MLB"
+  },
 };
 
 /*
