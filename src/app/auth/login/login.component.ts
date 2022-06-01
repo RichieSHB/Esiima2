@@ -16,22 +16,12 @@ import { AuthSMSService } from '../services/authSMS/auth-sms.service';
 })
 export class LoginComponent implements OnInit {
   public auth = getAuth();
-  
-  windowRef: any;
-  phoneNumber: string | undefined;
-  
+    
   loginForm =  new FormGroup({
     email: new FormControl(""),
     password: new FormControl(""),
   });
   
-  phoneForm =  new FormGroup({
-    number: new FormControl(""),
-    code: new FormControl("")
-  });
-
-  
-
   constructor(private authSvc: AuthService,private AuthSvcSms: AuthSMSService, private router:Router) {
 
   }

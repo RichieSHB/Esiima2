@@ -15,6 +15,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { perfilesService } from './perfiles.services';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     provideDatabase(() => getDatabase()),
     BrowserAnimationsModule
   ],
-  providers: [DataServices,{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+  providers: [DataServices,{ provide: FIREBASE_OPTIONS, useValue: environment.firebase },perfilesService,DataServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
