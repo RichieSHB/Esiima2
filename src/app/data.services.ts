@@ -13,7 +13,7 @@ export class DataServices {
     }
 
     cargarAdmins(){
-        return this.httpClient.get<admin[]>('https://esiima-2-default-rtdb.firebaseio.com/datos.json');
+        return this.httpClient.get<admin[]>('https://esiima-2-default-rtdb.firebaseio.com/admin.json');
     }
 
     guardarPerfiles(perfiles: perfil[]){
@@ -52,11 +52,6 @@ export class DataServices {
             );
     }
 
-    isAdmin(){
-        let url: string;
 
-        url = 'https://esiima-2-default-rtdb.firebaseio.com' + '/datos/' + (index) + '.json';
-         
-    }
 }
 

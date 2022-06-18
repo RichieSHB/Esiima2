@@ -3,6 +3,7 @@ import { perfil } from './models/perfil.model';
 import { Injectable } from '@angular/core';
 import { DataServices } from './data.services';
 import { Observable } from 'rxjs/internal/Observable';
+import { admin } from './models/admin.model';
 
 @Injectable()
 export class perfilesService {
@@ -18,6 +19,10 @@ export class perfilesService {
 
   obtenerperfiles() :Observable<perfil[]> {
     return this.dataService.cargarPerfiles();
+  }
+
+  obtenerAdmins() :Observable<admin[]> {
+    return this.dataService.cargarAdmins();
   }
 
   agregarperfil(perfil: perfil) {

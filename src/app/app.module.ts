@@ -16,11 +16,15 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { perfilesService } from './perfiles.services';
+import { ContactanosComponent } from './contactanos/contactanos.component';
+import { NosotrosComponent } from './nosotros/nosotros.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    ContactanosComponent,
+    NosotrosComponent
   ],
   imports: [
     BrowserModule,

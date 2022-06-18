@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
+import { getAuth } from "firebase/auth";
 
 import Auth = firebase.auth.Auth;
 import User = firebase.User;
@@ -41,4 +42,16 @@ export class AuthService {
     }
   }
 
+  usuarioActivo(){
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user !== null) {
+      // The user object has basic properties such as display name, email, etc.
+      const email = user.email;
+      
+      return email;
+    }
+    return;
+}
 }

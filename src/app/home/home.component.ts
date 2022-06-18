@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthService } from '../auth/services/auth.service';
+import { admin } from '../models/admin.model';
 import { perfil } from '../models/perfil.model';
 import { perfilesService } from '../perfiles.services';
 
@@ -9,9 +12,11 @@ import { perfilesService } from '../perfiles.services';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private perfilesService: perfilesService) { }
+  constructor(private perfilesService: perfilesService,private authSvc:AuthService, ) { }
   perfiles!: perfil[]
+  admin!: admin[];
 
+  public adminC = this.authSvc.authF.currentUser;
   ngOnInit(): void {this.perfilesService.obtenerperfiles()
     .subscribe(
       (perfiles: perfil[] = []) => {
@@ -22,6 +27,15 @@ export class HomeComponent implements OnInit {
       }
     );
     
+    this.perfilesService.obtenerAdmins()
+    .subscribe(
+      (admin: admin[] = []) => {
+        //Cargamos los datos de la base de datos al arreglo de personas local 
+        this.admin = admin;
+        console.log("admin:" + this.admin[0].correo);
+      }
+    );
+
   }
 
   registrar(nombre: string,materia: string,calificacion: string){
@@ -40,5 +54,14 @@ export class HomeComponent implements OnInit {
 
   eliminar(indice: number){
     this.perfilesService.eliminarperfil(indice);
+  }
+
+  isAdmin(){
+    const currentUser = this.authSvc.usuarioActivo();
+    if (currentUser == this.admin[0].correo) {
+      return true;
+    }
+    else
+      return false;
   }
 }

@@ -1,9 +1,12 @@
 <div class="row">
     <div class="col-md-6 mx-auto mt-5">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" *ngIf="true">
+                <p class="text-center">Para tener acceso al sistema debera iniciar sesion</p>
+            </div>
+            <div class="card-body" *ngIf="isAdmin()">
                 <!-- solo aparezca cuando se tiene sesion iniciada -->
-                <h2 class="text-center">Registrar un perfil(no se crea una cuenta)</h2>
+                <h2 class="text-center">Registrar calificaciones</h2>
                 <hr>
                 <form>
                     <div class="form-group">
