@@ -13,9 +13,9 @@ import { perfilesService } from '../perfiles.services';
 export class HomeComponent implements OnInit {
 
   constructor(private perfilesService: perfilesService,private authSvc:AuthService, ) { }
-  perfiles!: perfil[]
+  perfiles!: perfil[];
   admin!: admin[];
-
+  logged!: boolean;
   public adminC = this.authSvc.authF.currentUser;
   ngOnInit(): void {this.perfilesService.obtenerperfiles()
     .subscribe(
@@ -35,7 +35,9 @@ export class HomeComponent implements OnInit {
         console.log("admin:" + this.admin[0].correo);
       }
     );
-
+    this.logged = this.isLogged(); 
+    console.log(this.logged);
+    
   }
 
   registrar(nombre: string,materia: string,calificacion: string){
@@ -63,5 +65,10 @@ export class HomeComponent implements OnInit {
     }
     else
       return false;
+  }
+  isLogged(){ 
+    console.log("entre al logged de home");
+    
+    return this.logged = this.authSvc.isLogged();
   }
 }

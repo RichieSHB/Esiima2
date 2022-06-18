@@ -53,5 +53,17 @@ export class AuthService {
       return email;
     }
     return;
-}
+  }
+
+  isLogged(){
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user?.email !== undefined) {
+      console.log("true en authSertvice" + user?.email);
+      return true;
+    }else{
+      console.log("false en authSertvice" + user?.email);
+      return false;
+    }
+  }
 }

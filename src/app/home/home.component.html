@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6 mx-auto mt-5">
         <div class="card">
-            <div class="card-body" *ngIf="true">
+            <div class="card-body" *ngIf="!logged ; else alumno">
                 <p class="text-center">Para tener acceso al sistema debera iniciar sesion</p>
             </div>
             <div class="card-body" *ngIf="isAdmin()">
@@ -41,9 +41,25 @@
                               </ul>
                         </tr>
                       </table>
-
-                  </div>
+                </div>
             </div>
+            <ng-template #alumno>
+                <div class="box">
+                    <table *ngIf="perfiles">
+                        <tr *ngFor="let perfilElemento of perfiles, let i = index">
+                            <ul>
+                                <li>
+                                    <p>
+                                        <b>Nombre:</b> {{perfilElemento.name}} <br>
+                                        <b>Materia:</b> {{perfilElemento.materia}} <br>
+                                        <b>Calificacion:</b> {{perfilElemento.calificacion}} <br>
+                                    </p>
+                                </li>
+                              </ul>
+                        </tr>
+                      </table>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>
