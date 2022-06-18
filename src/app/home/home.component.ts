@@ -24,10 +24,21 @@ export class HomeComponent implements OnInit {
     
   }
 
-  registrar(nombre: string,email: string){
+  registrar(nombre: string,materia: string,calificacion: string){
     console.log("hola");
     
-    let entrada = new perfil(nombre,email);
+    let entrada = new perfil(nombre,materia,calificacion);
     this.perfilesService.agregarperfil(entrada);
+  }
+
+  modificar(nombre: string,materia: string,calificacion: string,indice: number){
+    console.log(nombre + calificacion + materia + indice);
+    
+    let entrada = new perfil(nombre,materia,calificacion);
+    this.perfilesService.modificarperfil(indice,entrada);
+  }
+
+  eliminar(indice: number){
+    this.perfilesService.eliminarperfil(indice);
   }
 }

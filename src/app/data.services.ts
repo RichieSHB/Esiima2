@@ -1,6 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { perfil } from "./models/perfil.model";
+import { admin } from "./models/admin.model";
+
 
 @Injectable()
 export class DataServices {
@@ -8,6 +10,10 @@ export class DataServices {
 
     cargarPerfiles(){
         return this.httpClient.get<perfil[]>('https://esiima-2-default-rtdb.firebaseio.com/datos.json');
+    }
+
+    cargarAdmins(){
+        return this.httpClient.get<admin[]>('https://esiima-2-default-rtdb.firebaseio.com/datos.json');
     }
 
     guardarPerfiles(perfiles: perfil[]){
@@ -22,9 +28,9 @@ export class DataServices {
 
     modificarPerfil(index:number, perfiles: perfil){
         let url: string;
-        url = 'https://esiima-2-default-rtdb.firebaseio.com' + '/datos/' + index + '.json';
+        url = 'https://esiima-2-default-rtdb.firebaseio.com' + '/datos/' + (index) + '.json';
         console.log("url de modificarPersona:" + url);
-        this.httpClient.put( url, perfil)
+        this.httpClient.put( url, perfiles)
             .subscribe(
                 (response) => {
                     console.log("resultado modificar Persona: " + response);
@@ -44,6 +50,13 @@ export class DataServices {
                 },
                 (error) => console.log("Error en eliminar Persona: " + error)
             );
+    }
+
+    isAdmin(){
+        let url: string;
+
+        url = 'https://esiima-2-default-rtdb.firebaseio.com' + '/datos/' + (index) + '.json';
+         
     }
 }
 

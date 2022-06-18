@@ -1,4 +1,4 @@
 export class perfil{
-    constructor(public name:string, public email:string){}
+    constructor(public name:string, public materia:string, public calificacion:string){}
     
 }

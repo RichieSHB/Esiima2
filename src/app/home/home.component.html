@@ -12,19 +12,28 @@
                         <input type="text" #nombre class="form-control" name="nombre" id="nombre">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" #email class="form-control" name="email" id="email">
+                        <label for="materia">Materia:</label>
+                        <input type="text" #materia class="form-control" name="materia" id="materia">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Calificacion:</label>
+                        <input type="number" #calificacion class="form-control" name="calificacion" id="calificacion">
                     </div>
                     <br>
-                    <button class="btn btn-dark btn-lg btn-right" (click)="registrar(nombre.value, email.value)"> Registrar</button>
+                    <button class="btn btn-dark btn-lg btn-right" (click)="registrar(nombre.value, materia.value, calificacion.value)"> Registrar</button>
                 </form>
                 <hr>
                 <div class="box">
                     <table *ngIf="perfiles">
-                        <tr *ngFor="let perfilElemento of perfiles">
+                        <tr *ngFor="let perfilElemento of perfiles, let i = index">
                             <ul>
                                 <li>
-                                  <th>{{ perfilElemento.name }} {{ perfilElemento.email }}</th>
+                                    <input type="text" #nombreE [value]="perfilElemento.name" id="nombre">
+                                    <input type="text" #materiaE [value]="perfilElemento.materia" id="nombre">
+                                    <input type="text" #calificacionE [value]="perfilElemento.calificacion" id="nombre">
+                                    <button (click)="modificar(nombreE.value, materiaE.value, calificacionE.value, i)">Editar</button>
+                                    <button (click)="eliminar(i)">Eliminar</button>
+                                  <!-- <th>{{ perfilElemento.name }} {{ perfilElemento.email }}</th> -->
                                 </li>
                               </ul>
                         </tr>
