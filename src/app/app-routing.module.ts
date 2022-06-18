@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ContactanosComponent } from './contactanos/contactanos.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch: 'full'},
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'register', loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterModule) },
   {path: 'nosotros', component: NosotrosComponent},
   {path: 'contactanos', component: ContactanosComponent},
+  {path: 'admin', component: AdminComponent},
 ];
 
 @NgModule({

@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { perfil } from "./models/perfil.model";
 import { admin } from "./models/admin.model";
+import { contacto } from "./models/contacto.model";
 
 
 @Injectable()
@@ -14,6 +15,20 @@ export class DataServices {
 
     cargarAdmins(){
         return this.httpClient.get<admin[]>('https://esiima-2-default-rtdb.firebaseio.com/admin.json');
+    }
+
+    cargarContactos(){
+        return this.httpClient.get<contacto[]>('https://esiima-2-default-rtdb.firebaseio.com/contactos.json');
+    }
+
+    guardarContactos(contactos: contacto[]){
+        console.log(contactos.toString);
+        
+        this.httpClient.put('https://esiima-2-default-rtdb.firebaseio.com/contactos.json',contactos)
+        .subscribe(
+            response => console.log("Resultado: " + response),
+            error => console.log("Error: " + error)
+        )
     }
 
     guardarPerfiles(perfiles: perfil[]){

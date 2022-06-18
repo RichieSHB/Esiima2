@@ -4,10 +4,12 @@ import { Injectable } from '@angular/core';
 import { DataServices } from './data.services';
 import { Observable } from 'rxjs/internal/Observable';
 import { admin } from './models/admin.model';
+import { contacto } from './models/contacto.model';
 
 @Injectable()
 export class perfilesService {
   perfiles: perfil[] = [];
+  contactos: contacto[] = [];
 
   constructor(private dataService: DataServices) {}
 
@@ -17,12 +19,20 @@ export class perfilesService {
     this.perfiles = perfil;
   }
 
+  setContactos(contactos: contacto[]) {
+    this.contactos = contactos;
+  }
+
   obtenerperfiles() :Observable<perfil[]> {
     return this.dataService.cargarPerfiles();
   }
 
   obtenerAdmins() :Observable<admin[]> {
     return this.dataService.cargarAdmins();
+  }
+  
+  obtenerContactos() :Observable<contacto[]>{
+    return this.dataService.cargarContactos();
   }
 
   agregarperfil(perfil: perfil) {
@@ -31,6 +41,14 @@ export class perfilesService {
     }
     this.perfiles.push(perfil);
     this.dataService.guardarPerfiles(this.perfiles);
+    //Si se guarda solo un elemento se debe trabajar cada indice y regenerarlos con cada modificacion
+  }
+  agregarContacto(contacto: contacto) {
+    if (this.contactos == null) {
+      this.contactos = [];
+    }
+    this.contactos.push(contacto);
+    this.dataService.guardarContactos(this.contactos);
     //Si se guarda solo un elemento se debe trabajar cada indice y regenerarlos con cada modificacion
     //this.dataService.guardarperfil(perfil, this.perfils.length);
   }

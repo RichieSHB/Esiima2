@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
         console.log("obtener personas suscriber:" + this.perfiles[0].name);
       }
     );
-    
+    window.document.title = 'Esiima 2';
     this.perfilesService.obtenerAdmins()
     .subscribe(
       (admin: admin[] = []) => {

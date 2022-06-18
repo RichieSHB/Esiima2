@@ -1,6 +1,6 @@
 import { NgModule, InjectionToken } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Injectable } from "@angular/core";
 import { HttpClientModule } from '@angular/common/http';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
@@ -18,13 +18,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { perfilesService } from './perfiles.services';
 import { ContactanosComponent } from './contactanos/contactanos.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
+import { AdminComponent } from './admin/admin.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ContactanosComponent,
-    NosotrosComponent
+    NosotrosComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [DataServices,{ provide: FIREBASE_OPTIONS, useValue: environment.firebase },perfilesService,DataServices],
   bootstrap: [AppComponent]
