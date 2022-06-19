@@ -27,7 +27,7 @@ import { AdminComponent } from './admin/admin.component';
     NavbarComponent,
     ContactanosComponent,
     NosotrosComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

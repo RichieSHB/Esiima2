@@ -1,5 +1,24 @@
 <div class="card">
     <div class="card-body">
-        ola
+        <h2><b>Contactos registrados</b></h2>
+        <hr>
+        <div class="card-body">
+            <div class="box">
+                <table *ngIf="contactos">
+                    <tr *ngFor="let contactoElemento of contactos, let i = index">
+                        <ul>
+                            <li>
+                                <p>
+                                    <b>Nombre:</b> {{contactoElemento.nombre}} <br>
+                                    <b>Apellido:</b> {{contactoElemento.apellidos}} <br>
+                                    <b>Email:</b> {{contactoElemento.email}} <br>
+                                </p>
+                            </li>
+                          </ul>
+                    </tr>
+                  </table>
+            </div>
+        </div>
+
     </div>
 </div>
