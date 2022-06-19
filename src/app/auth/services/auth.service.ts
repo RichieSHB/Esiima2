@@ -66,4 +66,17 @@ export class AuthService {
       return false;
     }
   }
+
+  get Mail():string
+  {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user?.email !== undefined) {
+      console.log("true en authSertvice" + user?.email);
+      return user?.email!;
+    }else{
+      console.log("false en authSertvice" + user?.email);
+      return user?.email!;
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { user } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
 import { admin } from '../models/admin.model';
@@ -14,16 +15,42 @@ export class HomeComponent implements OnInit {
 
   constructor(private perfilesService: perfilesService,private authSvc:AuthService, ) { }
   perfiles!: perfil[];
+  aux! : perfil;
+  perfilesAdmon!: perfil[];
   admin!: admin[];
+  mail! : string;
+  i:number = 0;
   logged!: boolean;
   public adminC = this.authSvc.authF.currentUser;
-  ngOnInit(): void {this.perfilesService.obtenerperfiles()
+  ngOnInit(): void {
+    this.perfiles = [];
+    this.mail = this.authSvc.Mail;
+    this.perfilesService.obtenerperfiles()
     .subscribe(
       (perfiles: perfil[] = []) => {
         //Cargamos los datos de la base de datos al arreglo de personas local 
-        this.perfiles = perfiles;
+        for(this.i = 0; this.i <= perfiles.length; this.i++)
+        {
+          if(perfiles[this.i].correo == this.mail)
+          {
+            console.log("hOLAAAA: " + this.mail);
+            this.perfiles.push(perfiles[this.i]);
+            console.log("llegue: " + this.perfiles);
+          }
+          
+        }
+        console.log("Aux: " + this.aux);
         this.perfilesService.setperfils(this.perfiles);
-        console.log("obtener personas suscriber:" + this.perfiles[0].name);
+      }
+    );
+    this.perfilesService.obtenerperfiles()
+    .subscribe(
+      (perfilesAdmon: perfil[] = []) => {
+        console.log("Holaaaaaaaa!");
+        //Cargamos los datos de la base de datos al arreglo de personas local 
+          this.perfilesAdmon = perfilesAdmon;
+          this.perfilesService.setperfils(this.perfilesAdmon);
+          console.log(this.perfilesAdmon);
       }
     );
     window.document.title = 'Esiima 2';
@@ -40,17 +67,18 @@ export class HomeComponent implements OnInit {
     
   }
 
-  registrar(nombre: string,materia: string,calificacion: string){
+
+  registrar(nombre: string,materia: string,calificacion: string, correo:string){
     console.log("hola");
     
-    let entrada = new perfil(nombre,materia,calificacion);
+    let entrada = new perfil(nombre,materia,calificacion,correo);
     this.perfilesService.agregarperfil(entrada);
   }
 
-  modificar(nombre: string,materia: string,calificacion: string,indice: number){
+  modificar(nombre: string,materia: string,calificacion: string,indice: number, correo:string ){
     console.log(nombre + calificacion + materia + indice);
     
-    let entrada = new perfil(nombre,materia,calificacion);
+    let entrada = new perfil(nombre,materia,calificacion, correo);
     this.perfilesService.modificarperfil(indice,entrada);
   }
 

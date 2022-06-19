@@ -7,13 +7,13 @@
             <div class="card-body" *ngIf="!isAdmin() && logged">
                 <div class="box">
                     <table *ngIf="perfiles">
-                        <tr *ngFor="let perfilElemento of perfiles, let i = index">
+                        <tr *ngFor="let perfilElemento1 of perfiles, let i = index">
                             <ul>
                                 <li>
                                     <p>
-                                        <b>Nombre:</b> {{perfilElemento.name}} <br>
-                                        <b>Materia:</b> {{perfilElemento.materia}} <br>
-                                        <b>Calificacion:</b> {{perfilElemento.calificacion}} <br>
+                                        <b>Nombre:</b> {{perfilElemento1.name}} <br>
+                                        <b>Materia:</b> {{perfilElemento1.materia}} <br>
+                                        <b>Calificacion:</b> {{perfilElemento1.calificacion}} <br>
                                     </p>
                                 </li>
                               </ul>
@@ -39,21 +39,26 @@
                         <label for="">Calificacion:</label>
                         <input type="number" #calificacion class="form-control" name="calificacion" id="calificacion">
                     </div>
+                    <div class="form-group">
+                        <label for="materia">Correo del alumno:</label>
+                        <input type="text" #correo class="form-control" name="correo" id="correo">
+                    </div>
                     <br>
-                    <button class="btn btn-dark btn-lg btn-right" (click)="registrar(nombre.value, materia.value, calificacion.value)"> Registrar</button>
+                    <button class="btn btn-dark btn-lg btn-right" (click)="registrar(nombre.value, materia.value, calificacion.value, correo.value)"> Registrar</button>
                 </form>
                 <hr>
                 <button class="btn btn-dark btn-lg btn-right" routerLink="/admin">Abrir panel de Admin</button>
                 <hr>
                 <div class="box">
-                    <table *ngIf="perfiles">
-                        <tr *ngFor="let perfilElemento of perfiles, let i = index">
+                    <table *ngIf="perfilesAdmon">
+                        <tr *ngFor="let perfilElemento of perfilesAdmon, let i = index">
                             <ul>
                                 <li>
-                                    <input type="text" #nombreE [value]="perfilElemento.name" id="nombre">
-                                    <input type="text" #materiaE [value]="perfilElemento.materia" id="nombre">
-                                    <input type="text" #calificacionE [value]="perfilElemento.calificacion" id="nombre">
-                                    <button (click)="modificar(nombreE.value, materiaE.value, calificacionE.value, i)">Editar</button>
+                                    <input type="text" #nombreE [value]="perfilElemento.name" id="nombre"> <br>
+                                    <input type="text" #materiaE [value]="perfilElemento.materia" id="nombre"> <br>
+                                    <input type="text" #calificacionE [value]="perfilElemento.calificacion" id="nombre"> <br>
+                                    <input type="text" #correoE [value]="perfilElemento.correo" id="correo">
+                                    <button (click)="modificar(nombreE.value, materiaE.value, calificacionE.value, i, correoE.value)">Modificar</button>
                                     <button (click)="eliminar(i)">Eliminar</button>
                                   <!-- <th>{{ perfilElemento.name }} {{ perfilElemento.email }}</th> -->
                                 </li>

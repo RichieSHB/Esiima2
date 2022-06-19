@@ -64,6 +64,7 @@ export class perfilesService {
     perfil1.name = perfil.name;
     perfil1.materia = perfil.materia;
     perfil1.calificacion = perfil.calificacion;
+    perfil1.correo = perfil.correo;
     this.dataService.modificarPerfil(index, perfil);
   }
 
