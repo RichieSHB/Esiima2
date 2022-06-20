@@ -1,11 +1,34 @@
+<div id="top">
+    .
+</div>
+
 <div class="row">
-    <div class="col-md-6 mx-auto mt-5">
-        <div class="card">
+    <div class="col-sm-12">
+        <div class="card-body" id="foto">
+    <img src="assets/logoesiima.jpg" alt="NO se ve :(" id="foto" />
+</div>
+        </div>
+    </div>
+
+<div class="row"> 
+    <div class="col-sm-12">
+        <div class="card-body" id="fondouaa" >
+            <div class="row">
+                <button (click)="iniciar()" class="btn btn-warning col-sm">
+                  INICIAR
+                </button>
+                <button (click)="detener()" class="btn btn-warning col-sm">
+                  PAUSAR
+                </button>
+                <button (click)="resumir()" class="btn btn-warning col-sm">
+                  RESUMIR
+                </button>
+            </div>
             <div class="card-body" *ngIf="!logged">
                 <p class="text-center">Para tener acceso al sistema debera iniciar sesion</p>
             </div>
-            <div class="card-body" *ngIf="!isAdmin() && logged">
-                <div class="box">
+            <div class="card-body"  *ngIf="!isAdmin() && logged">
+                <div class="box" >
                     <table *ngIf="perfiles">
                         <tr *ngFor="let perfilElemento1 of perfiles, let i = index">
                             <ul>
@@ -26,7 +49,9 @@
                 <h2 class="text-center">Registrar calificaciones</h2>
                 <hr>
                 <form>
+                    
                     <div class="form-group">
+                        
                         <label for="nombre">Nombre:</label>
 
                         <input type="text" #nombre class="form-control" name="nombre" id="nombre">
@@ -54,19 +79,27 @@
                         <tr *ngFor="let perfilElemento of perfilesAdmon, let i = index">
                             <ul>
                                 <li>
+                                    <div class="form-group">
                                     <input type="text" #nombreE [value]="perfilElemento.name" id="nombre"> <br>
                                     <input type="text" #materiaE [value]="perfilElemento.materia" id="nombre"> <br>
                                     <input type="text" #calificacionE [value]="perfilElemento.calificacion" id="nombre"> <br>
                                     <input type="text" #correoE [value]="perfilElemento.correo" id="correo">
-                                    <button (click)="modificar(nombreE.value, materiaE.value, calificacionE.value, i, correoE.value)">Modificar</button>
-                                    <button (click)="eliminar(i)">Eliminar</button>
+                                    <button id="mod" (click)="modificar(nombreE.value, materiaE.value, calificacionE.value, i, correoE.value)">Modificar</button>
+                                    <button id="eli" (click)="eliminar(i)">Eliminar</button>
                                   <!-- <th>{{ perfilElemento.name }} {{ perfilElemento.email }}</th> -->
+                                </div>
                                 </li>
                               </ul>
                         </tr>
+                       
                       </table>
+                      
                 </div>
             </div>
-        </div>
     </div>
+</div>
+
+
+
+
 </div>

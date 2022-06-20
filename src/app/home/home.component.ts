@@ -12,6 +12,7 @@ import { perfilesService } from '../perfiles.services';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  leer : string =  'e-siima Sistema Integral de Informacion y Modernizacion Administrativa. Registrar Calificaciones. Nombre. Materia. Calificacion. Correo del alumno. Registrar. Abrir panel de Admin. Rafa Quimica 11 rajopagu@gmail.com Modificar Eliminar ';
 
   constructor(private perfilesService: perfilesService,private authSvc:AuthService, ) { }
   perfiles!: perfil[];
@@ -99,4 +100,24 @@ export class HomeComponent implements OnInit {
     
     return this.logged = this.authSvc.isLogged();
   }
+  
+  ngOnInit2(): void {
+  }
+
+  iniciar(){
+    speechSynthesis.cancel();
+    let speech = new SpeechSynthesisUtterance(this.leer);
+    speechSynthesis.speak(speech);
+  }
+  detener(){
+    speechSynthesis.pause();
+  }
+  resumir(){
+    speechSynthesis.resume();
+  }
+
 }
+
+
+
+

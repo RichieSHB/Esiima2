@@ -1,5 +1,17 @@
+
 .contenedor{
-    display: grid;
+
+    padding: 20px;
+    margin: 40px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px 4px rgb(19 35 47 / 30%);
+    font-size: 1.5em;
+    width: 80%;
+    height: auto;
+    background-color: white;
+    text-align: center;
+  
+    font-size: 1.5em;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, auto);
 
@@ -7,19 +19,27 @@
                         "widget-1 widget-2 widget-3"
                         "widget-1 widget-2 widget-3"
                         "footer footer footer";
+                        align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 5vh;
+ 
+        background-color: #0080c0;
+    
+    
 }
+
 .contenedor > div,
 .contenedor .header,
 .contenedor .sidebar,
 .contenedor .footer{
-    background: aquamarine;
     padding: 20px;
     border-radius: 4px;
 }
 .contenedor .header{
     text-align: center;
-    background: bisque;
-    color: black;
+    background: #3c4c74;
+    color: white;
     grid-area: header;
 }
 
@@ -28,9 +48,8 @@
 .contenedor .widget-3{
     
     grid-area: widget-3;
-    background: coral;
+    background: #8685b3;
     color: black;
-    height: 100px;
 
     display: flex;
     align-items: center;
@@ -40,9 +59,8 @@
 .contenedor .widget-1
 {
     grid-area: widget-1;
-    background: coral;
+    background: #8685b3;
     color: black;
-    height: 100px;
 
     display: flex;
     align-items: center;
@@ -50,9 +68,8 @@
 }
 .contenedor .widget-2
 {
-    background: coral;
+    background: #8685b3;
     color: black;
-    height: 100px;
 
     display: flex;
     align-items: center;
@@ -60,11 +77,18 @@
     grid-area: widget-2;
 }
 .contenedor .footer{
-    background: chartreuse;   
+    background: #e6e6e8;   
 
     display: flex;
     justify-content: center;
 
     grid-area: footer;
 }
+
+button{
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+
 

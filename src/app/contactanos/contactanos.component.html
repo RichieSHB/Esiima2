@@ -1,6 +1,19 @@
-<div class="card">
-  <div class="card-body">
-    <h2><b>Contantenos!!!</b></h2>
+<div class="row">
+  <div class="col-sm-12">
+      <div class="card-body">
+      <div class="contenedor">
+        <div class="row">
+          <button (click)="iniciar()" class="btn btn-warning col-sm">
+            INICIAR
+          </button>
+          <button (click)="detener()" class="btn btn-warning col-sm">
+            PAUSAR
+          </button>
+          <button (click)="resumir()" class="btn btn-warning col-sm">
+            RESUMIR
+          </button>
+      </div>
+    <h2><b>CONTACTO</b></h2>
     <div style="text-align: center">
       <form novalidate [formGroup]="user" (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -82,3 +95,6 @@
     </div>
   </div>
 </div>
+  </div>
+</div>
+

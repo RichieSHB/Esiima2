@@ -9,6 +9,8 @@ import { perfilesService } from '../perfiles.services';
   styleUrls: ['./contactanos.component.css']
 })
 export class ContactanosComponent implements OnInit {
+  leer : string =  'CONTACTO. NOMBRE, nombre del usuario. Apellidos, Apellidos del usuario. Email addres, Email del usuario. Enviar Informacion del usuario';
+
   contactos!: contacto[];
   user!: FormGroup;
   constructor(private _fb: FormBuilder,private perfilesService: perfilesService) {}
@@ -43,5 +45,20 @@ export class ContactanosComponent implements OnInit {
       
     }
   }
+  ngOnInit2(): void {
+  }
+
+  iniciar(){
+    speechSynthesis.cancel();
+    let speech = new SpeechSynthesisUtterance(this.leer);
+    speechSynthesis.speak(speech);
+  }
+  detener(){
+    speechSynthesis.pause();
+  }
+  resumir(){
+    speechSynthesis.resume();
+  }
+
 
 }
